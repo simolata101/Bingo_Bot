@@ -1,0 +1,2 @@
+C:\Users\Reagan\source\repos\Pokefriends\Pokefriends\bin\Release\net6.0\win-x64\publish\Pokefriends.pdb
+C:\Users\Reagan\source\repos\Pokefriends\Pokefriends\bin\Release\net6.0\win-x64\publish\Pokefriends.exe
