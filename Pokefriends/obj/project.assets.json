@@ -148,28 +148,6 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Win32.SystemEvents/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -179,6 +157,52 @@
         },
         "runtime": {
           "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SixLabors.Fonts/2.1.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/SixLabors.Fonts.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SixLabors.Fonts.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SixLabors.ImageSharp/3.1.10": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/SixLabors.ImageSharp.props": {}
+        }
+      },
+      "SixLabors.ImageSharp.Drawing/2.1.6": {
+        "type": "package",
+        "dependencies": {
+          "SixLabors.Fonts": "2.1.3",
+          "SixLabors.ImageSharp": "3.1.8"
+        },
+        "compile": {
+          "lib/net6.0/SixLabors.ImageSharp.Drawing.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SixLabors.ImageSharp.Drawing.dll": {
             "related": ".xml"
           }
         }
@@ -202,33 +226,303 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "System.Drawing.Common/6.0.0": {
+      "System.Interactive.Async/6.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Win32.SystemEvents": "6.0.0"
+          "System.Linq.Async": "6.0.1"
         },
         "compile": {
-          "lib/net6.0/System.Drawing.Common.dll": {
+          "lib/net6.0/System.Interactive.Async.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/System.Drawing.Common.dll": {
+          "lib/net6.0/System.Interactive.Async.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Linq.Async/6.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "6.0.0"
+        },
+        "compile": {
+          "ref/net6.0/System.Linq.Async.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Linq.Async.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Reactive/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
             "related": ".xml"
           }
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
         },
-        "runtimeTargets": {
-          "runtimes/unix/lib/net6.0/System.Drawing.Common.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
-          "runtimes/win/lib/net6.0/System.Drawing.Common.dll": {
-            "assetType": "runtime",
-            "rid": "win"
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
+        }
+      }
+    },
+    "net6.0/linux-x64": {
+      "Discord.Net/3.14.1": {
+        "type": "package",
+        "dependencies": {
+          "Discord.Net.Commands": "3.14.1",
+          "Discord.Net.Core": "3.14.1",
+          "Discord.Net.Interactions": "3.14.1",
+          "Discord.Net.Rest": "3.14.1",
+          "Discord.Net.WebSocket": "3.14.1",
+          "Discord.Net.Webhook": "3.14.1"
+        }
+      },
+      "Discord.Net.Commands/3.14.1": {
+        "type": "package",
+        "dependencies": {
+          "Discord.Net.Core": "3.14.1"
+        },
+        "compile": {
+          "lib/net6.0/Discord.Net.Commands.dll": {
+            "related": ".xml"
           }
+        },
+        "runtime": {
+          "lib/net6.0/Discord.Net.Commands.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Discord.Net.Core/3.14.1": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "System.Collections.Immutable": "6.0.0",
+          "System.Interactive.Async": "6.0.1",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "lib/net6.0/Discord.Net.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Discord.Net.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Discord.Net.Interactions/3.14.1": {
+        "type": "package",
+        "dependencies": {
+          "Discord.Net.Core": "3.14.1",
+          "Discord.Net.Rest": "3.14.1",
+          "Discord.Net.WebSocket": "3.14.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
+          "System.Collections.Immutable": "6.0.0",
+          "System.Reactive": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Discord.Net.Interactions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Discord.Net.Interactions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Discord.Net.Rest/3.14.1": {
+        "type": "package",
+        "dependencies": {
+          "Discord.Net.Core": "3.14.1"
+        },
+        "compile": {
+          "lib/net6.0/Discord.Net.Rest.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Discord.Net.Rest.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Discord.Net.Webhook/3.14.1": {
+        "type": "package",
+        "dependencies": {
+          "Discord.Net.Core": "3.14.1",
+          "Discord.Net.Rest": "3.14.1"
+        },
+        "compile": {
+          "lib/net6.0/Discord.Net.Webhook.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Discord.Net.Webhook.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Discord.Net.WebSocket/3.14.1": {
+        "type": "package",
+        "dependencies": {
+          "Discord.Net.Core": "3.14.1",
+          "Discord.Net.Rest": "3.14.1"
+        },
+        "compile": {
+          "lib/net6.0/Discord.Net.WebSocket.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Discord.Net.WebSocket.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SixLabors.Fonts/2.1.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/SixLabors.Fonts.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SixLabors.Fonts.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SixLabors.ImageSharp/3.1.10": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/SixLabors.ImageSharp.props": {}
+        }
+      },
+      "SixLabors.ImageSharp.Drawing/2.1.6": {
+        "type": "package",
+        "dependencies": {
+          "SixLabors.Fonts": "2.1.3",
+          "SixLabors.ImageSharp": "3.1.8"
+        },
+        "compile": {
+          "lib/net6.0/SixLabors.ImageSharp.Drawing.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SixLabors.ImageSharp.Drawing.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Collections.Immutable/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/System.Collections.Immutable.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Collections.Immutable.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
       "System.Interactive.Async/6.0.1": {
@@ -502,35 +796,6 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Win32.SystemEvents/6.0.0": {
-      "sha512": "hqTM5628jSsQiv+HGpiq3WKBl2c8v1KZfby2J6Pr7pEPlK9waPdgEO6b8A/+/xn/yZ9ulv8HuqK71ONy2tg67A==",
-      "type": "package",
-      "path": "microsoft.win32.systemevents/6.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/Microsoft.Win32.SystemEvents.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/Microsoft.Win32.SystemEvents.dll",
-        "lib/net461/Microsoft.Win32.SystemEvents.xml",
-        "lib/net6.0/Microsoft.Win32.SystemEvents.dll",
-        "lib/net6.0/Microsoft.Win32.SystemEvents.xml",
-        "lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.dll",
-        "lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.xml",
-        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
-        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
-        "microsoft.win32.systemevents.6.0.0.nupkg.sha512",
-        "microsoft.win32.systemevents.nuspec",
-        "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll",
-        "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.xml",
-        "runtimes/win/lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.dll",
-        "runtimes/win/lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.xml",
-        "useSharedDesignerContext.txt"
-      ]
-    },
     "Newtonsoft.Json/13.0.3": {
       "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "type": "package",
@@ -561,6 +826,52 @@
         "packageIcon.png"
       ]
     },
+    "SixLabors.Fonts/2.1.3": {
+      "sha512": "ORWbZ5BHrC/LZvo+Y09MnoJq5VUKD85LsYALk+YI7CHFra+m5arCkz00IntDM6SrAiB22bvSdKtKmuCyHOKlqg==",
+      "type": "package",
+      "path": "sixlabors.fonts/2.1.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net6.0/SixLabors.Fonts.dll",
+        "lib/net6.0/SixLabors.Fonts.xml",
+        "sixlabors.fonts.128.png",
+        "sixlabors.fonts.2.1.3.nupkg.sha512",
+        "sixlabors.fonts.nuspec"
+      ]
+    },
+    "SixLabors.ImageSharp/3.1.10": {
+      "sha512": "R1HEPcqx3v+kvlOTPouP0g/Nzzud9pHtjlgGbFax3Ivaz8kkaGfS2EPfyDGpmfoTUQ3nQ5wxdhYyYa9fwYA9cw==",
+      "type": "package",
+      "path": "sixlabors.imagesharp/3.1.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "build/SixLabors.ImageSharp.props",
+        "lib/net6.0/SixLabors.ImageSharp.dll",
+        "lib/net6.0/SixLabors.ImageSharp.xml",
+        "sixlabors.imagesharp.128.png",
+        "sixlabors.imagesharp.3.1.10.nupkg.sha512",
+        "sixlabors.imagesharp.nuspec"
+      ]
+    },
+    "SixLabors.ImageSharp.Drawing/2.1.6": {
+      "sha512": "/VeIBfAcaYcqqWMgVyF0nzdmWBkDQhppL8tltd8pFyUYanytCFnJG77bZYOGllk4LYLFdKduACvbpKGUpflp1w==",
+      "type": "package",
+      "path": "sixlabors.imagesharp.drawing/2.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net6.0/SixLabors.ImageSharp.Drawing.dll",
+        "lib/net6.0/SixLabors.ImageSharp.Drawing.xml",
+        "sixlabors.imagesharp.drawing.128.png",
+        "sixlabors.imagesharp.drawing.2.1.6.nupkg.sha512",
+        "sixlabors.imagesharp.drawing.nuspec"
+      ]
+    },
     "System.Collections.Immutable/6.0.0": {
       "sha512": "l4zZJ1WU2hqpQQHXz1rvC3etVZN+2DLmQMO79FhOTZHMn8tDRr+WU287sbomD0BETlmKDn0ygUgVy9k5xkkJdA==",
       "type": "package",
@@ -581,45 +892,6 @@
         "lib/netstandard2.0/System.Collections.Immutable.xml",
         "system.collections.immutable.6.0.0.nupkg.sha512",
         "system.collections.immutable.nuspec",
-        "useSharedDesignerContext.txt"
-      ]
-    },
-    "System.Drawing.Common/6.0.0": {
-      "sha512": "NfuoKUiP2nUWwKZN6twGqXioIe1zVD0RIj2t976A+czLHr2nY454RwwXs6JU9Htc6mwqL6Dn/nEL3dpVf2jOhg==",
-      "type": "package",
-      "path": "system.drawing.common/6.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/System.Drawing.Common.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net461/System.Drawing.Common.dll",
-        "lib/net461/System.Drawing.Common.xml",
-        "lib/net6.0/System.Drawing.Common.dll",
-        "lib/net6.0/System.Drawing.Common.xml",
-        "lib/netcoreapp3.1/System.Drawing.Common.dll",
-        "lib/netcoreapp3.1/System.Drawing.Common.xml",
-        "lib/netstandard2.0/System.Drawing.Common.dll",
-        "lib/netstandard2.0/System.Drawing.Common.xml",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "runtimes/unix/lib/net6.0/System.Drawing.Common.dll",
-        "runtimes/unix/lib/net6.0/System.Drawing.Common.xml",
-        "runtimes/unix/lib/netcoreapp3.1/System.Drawing.Common.dll",
-        "runtimes/unix/lib/netcoreapp3.1/System.Drawing.Common.xml",
-        "runtimes/win/lib/net6.0/System.Drawing.Common.dll",
-        "runtimes/win/lib/net6.0/System.Drawing.Common.xml",
-        "runtimes/win/lib/netcoreapp3.1/System.Drawing.Common.dll",
-        "runtimes/win/lib/netcoreapp3.1/System.Drawing.Common.xml",
-        "system.drawing.common.6.0.0.nupkg.sha512",
-        "system.drawing.common.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
@@ -772,7 +1044,9 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Discord.Net >= 3.14.1",
-      "System.Drawing.Common >= 6.0.0"
+      "SixLabors.Fonts >= 2.1.3",
+      "SixLabors.ImageSharp >= 3.1.10",
+      "SixLabors.ImageSharp.Drawing >= 2.1.6"
     ]
   },
   "packageFolders": {
@@ -782,11 +1056,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Reagan\\source\\repos\\Pokefriends\\Pokefriends\\Pokefriends.csproj",
+      "projectUniqueName": "C:\\Users\\Reagan\\Documents\\GitHub\\Bingo_Bot\\Pokefriends\\Pokefriends.csproj",
       "projectName": "Pokefriends",
-      "projectPath": "C:\\Users\\Reagan\\source\\repos\\Pokefriends\\Pokefriends\\Pokefriends.csproj",
+      "projectPath": "C:\\Users\\Reagan\\Documents\\GitHub\\Bingo_Bot\\Pokefriends\\Pokefriends.csproj",
       "packagesPath": "C:\\Users\\Reagan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Reagan\\source\\repos\\Pokefriends\\Pokefriends\\obj\\",
+      "outputPath": "C:\\Users\\Reagan\\Documents\\GitHub\\Bingo_Bot\\Pokefriends\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -830,9 +1104,17 @@
             "target": "Package",
             "version": "[3.14.1, )"
           },
-          "System.Drawing.Common": {
+          "SixLabors.Fonts": {
             "target": "Package",
-            "version": "[6.0.0, )"
+            "version": "[2.1.3, )"
+          },
+          "SixLabors.ImageSharp": {
+            "target": "Package",
+            "version": "[3.1.10, )"
+          },
+          "SixLabors.ImageSharp.Drawing": {
+            "target": "Package",
+            "version": "[2.1.6, )"
           }
         },
         "imports": [
@@ -846,12 +1128,23 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.linux-x64",
+            "version": "[6.0.36, 6.0.36]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\RuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "linux-x64": {
+        "#import": []
       }
     }
   }
