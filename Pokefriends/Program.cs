@@ -2,12 +2,16 @@
 using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Drawing.Processing;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.Fonts;
+using SixLabors.ImageSharp.Drawing;
+using System.IO;
 
 namespace DiscordBingoBot
 {
@@ -564,73 +568,80 @@ namespace DiscordBingoBot
             int height = 600;
             int cellSize = 90;
             int margin = 20;
-            Font headerFont = new Font("Arial", 36, FontStyle.Bold);
-            Font numberFont = new Font("Arial", 24, FontStyle.Bold);
 
-            using Bitmap bmp = new(width, height);
-            using Graphics g = Graphics.FromImage(bmp);
 
-            g.Clear(System.Drawing.Color.White);
+            FontCollection fonts = new();
+            FontFamily arial = fonts.Add("Resources/arial.ttf");
+            Font headerFont = arial.CreateFont(36, FontStyle.Bold);
+            Font numberFont = arial.CreateFont(24, FontStyle.Bold);
+            Font winnerFont = arial.CreateFont(32, FontStyle.Bold);
 
-            if (isWinner)
+            using Image<Rgba32> image = new(width, height);
+            image.Mutate(ctx =>
             {
-                // Add winner background effect
-                using var brush = new LinearGradientBrush(
-                    new Point(0, 0),
-                    new Point(width, height),
-                    System.Drawing.Color.Gold,
-                    System.Drawing.Color.OrangeRed);
-                g.FillRectangle(brush, 0, 0, width, height);
-            }
+                if (isWinner)
+                {
+                    var gradientBrush = new LinearGradientBrush(
+                        new PointF(0, 0),
+                        new PointF(width, height),
+                        GradientRepetitionMode.None,
+                        new ColorStop(0, SixLabors.ImageSharp.Color.Gold),
+                        new ColorStop(1, SixLabors.ImageSharp.Color.OrangeRed)
+                    );
+                    ctx.Fill(gradientBrush, new RectangleF(0, 0, width, height));
+                }
+                else
+                {
+                    ctx.Fill(SixLabors.ImageSharp.Color.White);
+                }
 
-            // Draw header "BINGO"
-            string[] headers = { "B", "I", "N", "G", "O" };
-            for (int col = 0; col < 5; col++)
-            {
-                var rect = new Rectangle(margin + col * cellSize, margin, cellSize, cellSize);
-                g.FillRectangle(Brushes.DarkBlue, rect);
-                g.DrawRectangle(Pens.Black, rect);
-                var sf = new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
-                g.DrawString(headers[col], headerFont, Brushes.White, rect, sf);
-            }
-
-            // Draw numbers
-            for (int row = 0; row < 5; row++)
-            {
+                // Draw header "BINGO"
+                string[] headers = { "B", "I", "N", "G", "O" };
                 for (int col = 0; col < 5; col++)
                 {
-                    var rect = new Rectangle(margin + col * cellSize, margin + (row + 1) * cellSize, cellSize, cellSize);
-                    bool isMarked = marked[row, col];
-
-                    if (isWinner && isMarked)
-                    {
-                        g.FillRectangle(Brushes.Gold, rect);
-                    }
-                    else
-                    {
-                        g.FillRectangle(isMarked ? Brushes.LightGreen : Brushes.LightYellow, rect);
-                    }
-
-                    g.DrawRectangle(Pens.Black, rect);
-
-                    string text = card[row, col] == 0 ? "FREE" : card[row, col].ToString();
-                    Brush brush = isMarked ? Brushes.Red : Brushes.Black;
-
-                    var sf = new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
-                    g.DrawString(text, numberFont, brush, rect, sf);
+                    var rect = new RectangleF(margin + col * cellSize, margin, cellSize, cellSize);
+                    ctx.Fill(SixLabors.ImageSharp.Color.DarkBlue, rect);
+                    ctx.Draw(SixLabors.ImageSharp.Color.Black, 1, rect);
+                    ctx.DrawText(headers[col], headerFont, SixLabors.ImageSharp.Color.White, rect.Center());
                 }
-            }
 
-            if (isWinner)
-            {
-                // Add winner text
-                Font winnerFont = new Font("Arial", 32, FontStyle.Bold);
-                g.DrawString("WINNER!", winnerFont, Brushes.DarkRed, width / 2 - 80, height - 50);
-            }
+                // Draw numbers
+                for (int row = 0; row < 5; row++)
+                {
+                    for (int col = 0; col < 5; col++)
+                    {
+                        var rect = new RectangleF(margin + col * cellSize, margin + (row + 1) * cellSize, cellSize, cellSize);
+                        bool isMarked = marked[row, col];
+
+                        SixLabors.ImageSharp.Color fillColor = isWinner && isMarked
+                            ? SixLabors.ImageSharp.Color.Gold
+                            : isMarked ? SixLabors.ImageSharp.Color.LightGreen : SixLabors.ImageSharp.Color.LightYellow;
+
+                        ctx.Fill(fillColor, rect);
+                        ctx.Draw(SixLabors.ImageSharp.Color.Black, 1, rect);
+
+                        string text = card[row, col] == 0 ? "FREE" : card[row, col].ToString();
+                        SixLabors.ImageSharp.Color textColor = isMarked ? SixLabors.ImageSharp.Color.Red : SixLabors.ImageSharp.Color.Black;
+
+                        ctx.DrawText(text, numberFont, textColor, rect.Center());
+                    }
+                }
+
+                if (isWinner)
+                {
+                    var location = new PointF(width / 2 - 80, height - 50);
+                    ctx.DrawText("WINNER!", winnerFont, SixLabors.ImageSharp.Color.DarkRed, location);
+                }
+            });
 
             using MemoryStream ms = new();
-            bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            image.SaveAsPng(ms);
             return ms.ToArray();
+        }
+
+        private static PointF Center(this RectangleF rect)
+        {
+            return new PointF(rect.X + rect.Width / 2, rect.Y + rect.Height / 2);
         }
     }
 }
