@@ -43,8 +43,7 @@ namespace DiscordBingoBot
             _client.MessageReceived += MessageReceivedAsync;
             _client.UserVoiceStateUpdated += UserVoiceStateUpdatedAsync;
 
-            Console.Write("Enter API Token: ");
-            string token = Console.ReadLine();
+            string token = Environment.GetEnvironmentVariable("DISCORD_TOKEN");
 
             await _client.LoginAsync(TokenType.Bot, token);
             await _client.StartAsync();
