@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Pokefriends")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d22f5ea14d19a68798ccc29275684bcb3b9d9209")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pokefriends")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pokefriends")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
