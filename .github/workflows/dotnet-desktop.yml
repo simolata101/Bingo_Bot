@@ -25,4 +25,4 @@ jobs:
       run: dotnet build --configuration Release
 
     - name: Run the bot (for testing)
-      run: dotnet run --project Bingo_Bot
+      run: dotnet run --project Pokefriends
